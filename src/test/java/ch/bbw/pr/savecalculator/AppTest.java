@@ -1,5 +1,6 @@
 package ch.bbw.pr.savecalculator;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Before;
@@ -51,6 +52,17 @@ public class AppTest {
         SaveCalculator testee = new SaveCalculator();
         testee.summe(value1, value2);
     }
-
+    @Test
+    public void testProtectedPower() {
+        SaveCalculator testee = new SaveCalculator();
+        assertEquals(32, testee.pow(2, 5));
+    }
+    @Test(expected = NoSuchMethodException.class)
+    public void testPrivateMul() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        SaveCalculator testee = new SaveCalculator();
+        Method method = testee.getClass().getDeclaredMethod("multiplication", int.class, int.class);
+        method.setAccessible(true);
+        assertEquals(10, method.invoke(testee, 2, 5));
+    }
 
 }

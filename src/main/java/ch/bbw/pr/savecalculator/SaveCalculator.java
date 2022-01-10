@@ -29,13 +29,32 @@ public class SaveCalculator {
 		}return subtract1 - subtract2;
 	}
 
+	public int subtraktion(int value1, int value2) {
+		long value = (long) value1 - (long) value2;
+		if ((value > Integer.MAX_VALUE) || (value < Integer.MIN_VALUE)) {
+			throw new ArithmeticException();
+		}
+		return value1 - value2;
+	}
 	public double division(int value1, int value2) {
+		if (value2 == 0)
+			throw new ArithmeticException("division on zero");
+		long value = (long) value1 / (long) value2;
+		if ((value > Integer.MAX_VALUE) || (value < Integer.MIN_VALUE)) {
+			throw new ArithmeticException();
+		}
 		return value1 / value2;
 	}
-	private double multiplication(int value1, int value2) {
+	private double multiplication(Integer value1, Integer value2) {
+		long value = (long) value1 * (long) value2;
+		if ((value > Integer.MAX_VALUE) || (value < Integer.MIN_VALUE)) {
+			throw new ArithmeticException();
+		}
 		return value1 * value2;
 	}
-	//pow
-	//sqrt
-	//...
+	// pow
+	protected int pow(int value, int powValue)
+	{
+		return (int) Math.pow(value, powValue);
+	}
 }
