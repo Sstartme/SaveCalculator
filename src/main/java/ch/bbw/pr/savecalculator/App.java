@@ -2,10 +2,10 @@ package ch.bbw.pr.savecalculator;
 
 /**
  * Application
- * @autor <your name>
+ * @autor Sinthella Anpalagan
  * @version 1.0.0
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {

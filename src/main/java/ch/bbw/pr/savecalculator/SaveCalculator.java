@@ -5,9 +5,10 @@ package ch.bbw.pr.savecalculator;
  * Rechnet 'vorsichtig' mit Zahlen.
  * Warnt, wenn etwas nicht geht.
  *   
- * @author Peter Rutschmann
+ * @author Sinthella Anpalagan
  * @version 0.0.1
  */
+
 public class SaveCalculator {
 	public int summe(int summand1, int summand2) throws ArithmeticException
 	{
@@ -19,14 +20,19 @@ public class SaveCalculator {
 	}
 
 	//Noch un-safe Methoden, die müssen noch angepasst werden.
-	public int subtraktion(int value1, int value2)
-	{
-		return value1 - value2;
+	public int subtract(int subtract1, int subtract2) throws ArithmeticException {
+		long value = (long) subtract1 - (long) subtract2;
+		if ((value > Integer.MAX_VALUE) || (value < Integer.MIN_VALUE)) {
+			throw new ArithmeticException();
+
+
+		}return subtract1 - subtract2;
 	}
+
 	public double division(int value1, int value2) {
 		return value1 / value2;
 	}
-	private double multiplication(Integer value1, Integer value2) {
+	private double multiplication(int value1, int value2) {
 		return value1 * value2;
 	}
 	//pow
