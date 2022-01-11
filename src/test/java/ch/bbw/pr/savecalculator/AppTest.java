@@ -190,12 +190,12 @@ public class AppTest {
         assertTrue(testee.subtract(value1, value2) == -6);
     }
 
-    @Test(expected = ArithmeticException.class)
-    public void testSubtraktionGroesstePositiveZahlUndKleinstePositiveZahlThrowsExpectedExceptionIsOK() {
+    @Test
+    public void testSubtraktionGroesstePositiveZahlUndKleinstePositiveZahlIsOK() {
         int value1 = Integer.MAX_VALUE;
         int value2 = 1;
         SaveCalculator testee = new SaveCalculator();
-        assertTrue(testee.subtract(value1, value2) == -2147483647);
+        assertTrue(testee.subtract(value1, value2) == 2147483646);
         testee.subtract(value1, value2);
     }
 
@@ -242,32 +242,47 @@ public class AppTest {
             SaveCalculator testee = new SaveCalculator();
             assertTrue(testee.divide(value1, value2) == 2147483647);
     }
+    @Test
+    public void testDivisionGroessteNegativeUndKleinstePositiveIsOk() {
+        int value1 = Integer.MIN_VALUE;
+        int value2 = 1;
+        SaveCalculator testee = new SaveCalculator();
+        assertTrue(testee.divide(value1, value2) == -2147483648);
+    }
 
     @Test
     public void testDivisionGroesstePositiveZahlUndKleinsteNegativeIsOK() {
         int value1 = Integer.MAX_VALUE;
         int value2 = -1;
         SaveCalculator testee = new SaveCalculator();
-        assertTrue(testee.divide(value1, value2) == -2147483648);
-    }
-    @Test
-    public void testDivisionGroessteNegativeZahlUndKleinstePositiveIsOK() {
-        int value1 = Integer.MIN_VALUE;
-        int value2 = 1;
-        SaveCalculator testee = new SaveCalculator();
         assertTrue(testee.divide(value1, value2) == -2147483647);
     }
     @Test
-    public void testDivisionGroessteNegativeZahlUndKleinsteNegativeThrowsExpectedExceptionIsOK() {
-        int value1 = Integer.MIN_VALUE;
-        int value2 = -1;
+    public void testDivisionGroessteNegativeZahlUndKleinstePositiveIsOK() {
+        int value1 = Integer.MAX_VALUE;
+        int value2 = 1;
         SaveCalculator testee = new SaveCalculator();
-        assertTrue(testee.divide(value1, value2) == -2147483648);
+        assertTrue(testee.divide(value1, value2) == 2147483647);
     }
     @Test
+    public void testDivisionGroessteNegativeZahlUndKleinsteNegativeIsOK() {
+        int value1 = Integer.MAX_VALUE;
+        int value2 = -1;
+        SaveCalculator testee = new SaveCalculator();
+        assertTrue(testee.divide(value1, value2) == -2147483647);
+
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void testDivisionEinNegativeNullIszOk() {
+        SaveCalculator testee = new SaveCalculator();
+        testee.divide(-11, 0);
+    }
+
+    @Test (expected = ArithmeticException.class)
     public void testDivisionPositiveZahlUndNullThrowsUnexpectedExceptionIsNOK() throws NullPointerException {
         int value1 = 12;
-        Integer value2 = null;
+        Integer value2 = 0;
         SaveCalculator testee = new SaveCalculator();
         testee.divide(value1, value2);
     }
@@ -314,21 +329,21 @@ public class AppTest {
         assertTrue(testee.multiply(value1, value2) == -Integer.MAX_VALUE);
     }
     @Test
-    public void testMultiplikationGroesstePositiveZahlUndkleinstePositiveZahlThrowsExpectedExceptionIsOk() {
+    public void testMultiplikationGroesstePositiveZahlUndkleinstePositiveZahlIsOk() {
         int value1 = Integer.MAX_VALUE;
         int value2 = 1;
         SaveCalculator testee = new SaveCalculator();
-        assertTrue(testee.multiply(value1, value2) == -Integer.MAX_VALUE);
+        assertTrue(testee.multiply(value1, value2) == 2147483647);
     }
     @Test
     public void testMultiplikationGroessteNegativeZahlUndKleinstePositiveIsOK() {
         int value1 = Integer.MIN_VALUE;
         int value2 = 1;
         SaveCalculator testee = new SaveCalculator();
-        assertTrue(testee.multiply(value1, value2) == -2147483647);
+        assertTrue(testee.multiply(value1, value2) == -2147483648);
     }
-    @Test
-    public void testMultiplikationGroessteNegativeZahlUndKleinsteNegativeThrowsExpectedExceptionIsOK() {
+    @Test (expected = ArithmeticException.class)
+    public void testMultiplikationGroessteNegativeZahlUndKleinsteNegativeIsOK() {
         int value1 = Integer.MIN_VALUE;
         int value2 = -1;
         SaveCalculator testee = new SaveCalculator();

@@ -45,7 +45,7 @@ public class SaveCalculator {
 		}
 		return value1 / value2;
 	}
-	private double multiply(Integer value1, Integer value2) {
+	public double multiply(Integer value1, Integer value2) {
 		long value = (long) value1 * (long) value2;
 		if ((value > Integer.MAX_VALUE) || (value < Integer.MIN_VALUE)) {
 			throw new ArithmeticException();
