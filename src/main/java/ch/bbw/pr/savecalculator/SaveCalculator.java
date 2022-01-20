@@ -53,8 +53,30 @@ public class SaveCalculator {
 		return value1 * value2;
 	}
 	// pow
-	protected int pow(int value, int powValue)
-	{
+	protected int pow(int value, int powValue) {
 		return (int) Math.pow(value, powValue);
 	}
-}
+	// calculate the sqrt of a integer number
+	public int sqrt(int value) {
+		if(value == 0)
+			return 0;
+		if(value < 0)
+			throw new ArithmeticException();
+		return (int) Math.sqrt(value);
+	}
+	// calculate the modulo (rest) of to numbers
+	public int modulo(int a, int b) {
+		return a % b;
+	}
+	public String decToBinary(int decNumber)
+	{
+		return Integer.toBinaryString(decNumber);
+	}
+	public String decToHex(int decNumber)
+	{
+		return Integer.toHexString(decNumber).toUpperCase();
+	}
+	public String decToOctal(int decNumber)
+	{
+		return Integer.toOctalString(decNumber).toUpperCase();
+	}}
